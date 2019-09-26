@@ -15,9 +15,9 @@ class redpacket():
 
         database = DB()
         ol=database.connect_mongodb_all('tb_redpond', 2,sum)
-        self.total_money=float(database.get_data(ol,'total'))
+        self.total_money=float(database.get_data(ol,'total')[0])
         del_ol=database.connect_mongodb_all('tb_redpond', 2,del_sum)
-        self.del_total_money=float(database.get_data(del_ol,'total'))
+        self.del_total_money=float(database.get_data(del_ol,'total')[0])
         total=self.total_money-self.del_total_money
         print('普奖奖池总额：%.2f'%total)
 
@@ -32,9 +32,9 @@ class redpacket():
         surplus_sum=[{'$group': {'_id': '剩余金额总额', 'total': {'$sum': "$remainMoney"}}}]
         database = DB()
         ol = database.connect_mongodb_all('tb_redpond', 2, sum)
-        self.total_money = float(database.get_data(ol, 'total'))
+        self.total_money = float(database.get_data(ol, 'total')[0])
         del_ol = database.connect_mongodb_all('tb_redpond', 2, surplus_sum)
-        self.surplus_money = float(database.get_data(del_ol, 'total'))
+        self.surplus_money = float(database.get_data(del_ol, 'total')[0])
         total = self.total_money - self.surplus_money
         print('已发放总额：%.2f' % total)
 
@@ -47,7 +47,7 @@ class redpacket():
         sum = [{'$match':{"isDelete" :False}},{'$group':{'_id':'剩余规则总额','total':{'$sum':"$remainMoney"}}}]
         database = DB()
         ol = database.connect_mongodb_all('tb_redpond', 2, sum)
-        self.total_money = float(database.get_data(ol, 'total'))
+        self.total_money = float(database.get_data(ol, 'total')[0])
         print('已发放总额：%.2f' % self.total_money)
 
 
