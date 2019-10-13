@@ -1,0 +1,14 @@
+1、参数：
+-w 指定用户数
+-r 每个用户请求个数
+-d 指定运行时长
+-q 静默情况执行
+-x 当出现失败时停止执行
+
+
+2、运行
+打印响应时间等情况：
+molotov --use-extension performance/print_time.py -w 1 -d 2 performance/Molotov.py
+
+不打印响应情况：
+molotov performance/Molotov.py -w 300 -d 1
