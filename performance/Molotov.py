@@ -10,7 +10,8 @@ payload={'page': 1,'rows': 10}
 async def scenario_one(session):
     async with session.post(API,json=payload) as resp:
         res = await resp.json()
-        assert res['success'] == 'true'
+        print(res)
+        assert res['success'] == True
         assert resp.status == 200
 
 
