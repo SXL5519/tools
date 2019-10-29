@@ -5,6 +5,9 @@ _API = 'https://activity.godteam.net/redPond/redPondRollData'
 API='https://activity.godteam.net/redPond/redPondGoods'
 payload={'page': 1,'rows': 10}
 
+a='http://192.168.1.118:8070/merchant/merReward/saveMerchantRewardApply'
+aa={'goodsJson':[{'id':'5d9d3c420b06ca7b955a0f66','num':1},{'id':'5d922ebe8dfe9f4f0d5070ae','num':3}]}
+
 
 @scenario(weight=40)
 async def scenario_one(session):
@@ -19,5 +22,5 @@ async def scenario_one(session):
 async def scenario_two(session):
     async with session.get(_API) as resp:
         r=await resp.json()##读取接口返回值
-        print(r)
+        print(resp.status)
         assert resp.status == 200

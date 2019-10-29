@@ -56,6 +56,21 @@ class DB:
         client.close()
         return value
 
+    def update_mongodb_data(self,table,sql,document):
+        """
+        更新mongodb数据
+        :return:
+        """
+        client = MongoClient(host=host, port=port)  ##无密码
+        # client = MongoClient(host=host,port=port,username=username,password=password)
+        db = client[database]
+        # print(db)
+        collection = db[table]
+        print(sql)
+        print(document)
+        collection.update(sql,document)
+
+
     def connect_mysql_all(self,sql,params):
         """
         查询sql全部数据

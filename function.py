@@ -229,6 +229,31 @@ def get_all_data(filepath):
     return cases
 
 
+def read_csv(path,n):
+    """
+    读取CSV文件的某一列
+    :param path:
+    :return:
+    """
+    with open(path,"r") as csvfile:
+        # 读取csv文件，返回的是迭代类型
+        read = csv.DictReader(csvfile)
+        #返回Url列的所有数据
+        data = [row[n] for row in read]
+    return data
+
+def read_txt(path):
+    """
+    按行读取txt文件的数据，并加入到list
+    :param path:
+    :return:
+    """
+    data=[]
+    for line in open(path,"r"):
+        d=re.match('.*',line)
+        data.append(d.group())
+    return data
+
 def altel_data(data):
     """
     组装data ，需要改变变量类型
