@@ -52,6 +52,8 @@ class DB:
             value = collection.aggregate(n)
         elif type == 3:
             value = collection.find(n).count()
+        elif type ==4:
+            value = collection.find(n)
         # print(value)
         client.close()
         return value

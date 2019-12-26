@@ -4,7 +4,6 @@
 
 
 import datetime
-from _pydecimal import Decimal
 from time import sleep
 
 from bson import Decimal128
@@ -62,10 +61,12 @@ def update_data():
     """
     from db_file import DB
     from function import read_txt
-    data=read_txt("../datafile/222.txt")
-    for n in data:
-        sql={"_id" : n}
-        document={"$set":{"money":Decimal128("100.00")}}
+    data1=read_txt("../datafile/22222.txt")
+    data = read_txt("../datafile/11111.txt")
+    for n in range(0,len(data)):#
+        sql={"telephone" : data[n]}
+        # document={"$set":{"mini_openId" : data1[n]}}
+        document = {"$set": {"miniOpenIdCopy": data1[n]}}
         multi={'multi': True}
         database = DB()
         database.update_mongodb_data('tb_user',sql,document)

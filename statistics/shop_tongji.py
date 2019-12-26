@@ -167,7 +167,7 @@ class test_shop_tongji():
         store_id = store.get('_id')
         tongji =test_tongji()
         db_profit = database.connect_mongodb_all('tb_order_detail',2,
-                                                self.sql_s( tongji.get_data(n, nu)[0], tongji.get_data(n, nu)[1],1,store_id))
+                                                self.sql_s( tongji.get_time(n, nu)[0], tongji.get_time(n, nu)[1],1,store_id))
 
         for i in db_profit:
             costPrice=float(str(i.get('costPrice')))##成本价
@@ -176,7 +176,7 @@ class test_shop_tongji():
             self.profit_s=self.profit_s+count*(totalPrice-costPrice)
         # print(self.profit_s)
         db_refund=database.connect_mongodb_all('tb_return_apply',2,
-                                                self.sql_s( tongji.get_data(n, nu)[0], tongji.get_data(n, nu)[1],2,store_id))
+                                                self.sql_s( tongji.get_time(n, nu)[0], tongji.get_time(n, nu)[1],2,store_id))
         for j in db_refund:
             refund_costPrice=float(str(j.get('orderDetail').get('costPrice')))
             refund_totalPrice=float(str(j.get('orderDetail').get('totalPrice')))
