@@ -19,23 +19,23 @@ import json
 
 class ConfigHttp():
 
-    def __init__(self,case):
-        localReadConfig = readConfig.ReadConfig()
-        global host, port, timeout
-        host = localReadConfig.get_http("baseurl")
-        port = localReadConfig.get_http("port")
-        timeout = float(localReadConfig.get_http("timeout"))
-        self.headers=localReadConfig.get_http("headers")
-        self.case_name=case.get('case_name')
-        self.method=case.get('method')
-        self.url=case.get('url')
-        self.header=case.get('header')
-        self.data=case.get('data')
-        self.update_data_Fields=case.get('update_data_Fields').split(';')
-        self.sql_Table=case.get('sql_Table')
-        self.sql_query_statement=case.get('sql_query_statement')
-        self.assert_msg=case.get('assert_msg').split(';')
-    def set_url(self, url):
+    # def __init__(self,case):
+    #     localReadConfig = readConfig.ReadConfig()
+    #     global host, port, timeout
+    #     host = localReadConfig.get_http("baseurl")
+    #     port = localReadConfig.get_http("port")
+    #     timeout = float(localReadConfig.get_http("timeout"))
+    #     self.headers=localReadConfig.get_http("headers")
+    #     self.case_name=case.get('case_name')
+    #     self.method=case.get('method')
+    #     self.url=case.get('url')
+    #     self.header=case.get('header')
+    #     self.data=case.get('data')
+    #     self.update_data_Fields=case.get('update_data_Fields').split(';')
+    #     self.sql_Table=case.get('sql_Table')
+    #     self.sql_query_statement=case.get('sql_query_statement')
+    #     self.assert_msg=case.get('assert_msg').split(';')
+    def set_url(self,host, url):
         """
         组装URL
         :param url:
